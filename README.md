@@ -18,3 +18,11 @@ distDir目录中就是打好的所有的IPA包。
 * [ios自动化打包 教程（一）](http://blog.sina.com.cn/s/blog_7c8dc2d50101a52r.html)
 * [ios自动化打包 教程（二）](http://blog.sina.com.cn/s/blog_7c8dc2d50101a53f.html)
 * [IOS开发：自动化打包](http://blog.csdn.net/daiyelang/article/details/8641221)
+
+####四. 越狱包验证测试方法:
+1. 电脑商安装iTools最新版版本，需要一台已越狱且安装了AppSync补丁的iPhone手机。
+![image](BBEB1DB0-8F40-4CD4-AC30-AA54479ECCE5.png)
+2. 程序-->安装，选择刚才打好的越狱渠道包就可以给越狱手机安装应用了。
+![image](testIPA.png)
+
+

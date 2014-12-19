@@ -23,7 +23,8 @@ else
 fi
 
 ####创建distDir目录
-distDir="$base_dir/distDir"               #打包后ipa文件存储目录(相对路径)
+distDir="$(dirname ${sourceIPAName})""/autoIPA_distDir"               #打包后ipa文件存储目录(相对路径)
+echo $distDir
 rm -rdf "${distDir}"
 mkdir "${distDir}"
 
@@ -65,6 +66,7 @@ settingsCnt=`${PLISTBUDDY} -c "Print allChannel:" ${plistfile} | grep "Dict"|wc 
 #echo "$settingsCnt"
 
 #### 循环遍历allChannel数据
+ipaNameString=""
 for((i=0;i<$settingsCnt;i++));
 do
     #echo $i;
@@ -85,6 +87,8 @@ do
     zip -r ${ipaName} Payload
     mv ${ipaName} ${distDir}
     echo "created IPA: $ipaName";
+
+    ipaNameString="${ipaNameString}""${ipaName}""\n"
 done
 
 ####清理Payload目录和tempIPA文件
@@ -93,8 +97,14 @@ rm -rdf "${tempIPAName}"
 
 ####打开结果目录
 open "${distDir}"
-`osascript -e 'tell app "System Events" to (display dialog "恭喜您，IPA已经全部生成完成。\n存放路径: '${distDir}' " with title "自动打包已完成" buttons {"ok"})'`
+#`osascript -e 'tell app "System Events" to (display dialog "恭喜您，IPA已经全部生成完成。\n存放路径: '${distDir}' " with title "自动打包已完成" buttons {"ok"})'`
 
+#shell中调用applescript代码
+exec osascript <<EOF
+tell application "System Events"
+display dialog "本次IPA存放路径:\n${distDir}  \n\nIPA文件清单:\n${ipaNameString}" with title "自动打包已完成" buttons {"ok"}
+end tell
+EOF
 
 
 

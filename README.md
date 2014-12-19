@@ -1,5 +1,7 @@
 ####一. 使用autoIPA.app生成渠道包
->双击autoIPA.app运行并根据提示操作即可。
+1. 双击autoIPA.app运行。
+2. 选择testIPA中的demo.ipa，然后开始自动生成。
+![image](selectedIPA.png)
 
 ####二. 使用autoIPA.sh生成渠道包
 在终端中调用以下代码,ipa母包路径作为sh文件运行参数。

@@ -36,8 +36,10 @@ PLISTBUDDY="/usr/libexec/PlistBuddy"
 plistfile=$(find "Payload" -name "AppConfig.plist" -print)
 echo "plistfile: ${plistfile}"
 
-####搜索并获取info.plist文件完整路径
-infoPlist=$(find "Payload" -name "Info.plist" -print)
+####搜索Payload目录下所有info.plist文件并获取完整路径,第一个结果就是app的info.plist
+infoPlistArray=($(find "Payload" -name "Info.plist" -print))
+infoPlist=${infoPlistArray[0]}
+
 echo "infoPlist: ${infoPlist}"
 ########################################################################
 

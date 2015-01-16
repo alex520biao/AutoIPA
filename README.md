@@ -9,6 +9,8 @@
 	/Users/xxxx/new/autoIPA.sh "yyyy/zzzz/demo.ipa"
 distDir目录中就是打好的所有的IPA包。
 
+>如果Info.plist文件读取失败，则从app目录中拷贝Info.plist到别处修改sh文件直接运行即可。
+
 ####三. 已有脚本的问题及本次改进
 1. 在程序中使用AppConfig.plist文件存储所有渠道数据及当前渠道数据,渠道信息管理方便。plist是格式化信息的存储类型,查看、编辑、读取信息比较方便。已有脚本通过sourceid.dat和data.dat文件存放渠道信息。
 2. 已有脚本需要每次修改sh文件中参数，新脚本直接从ipa母包中读取程序基本信息打包。

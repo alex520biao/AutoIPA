@@ -83,11 +83,14 @@ do
     ${PLISTBUDDY} -c "Set :ChannelNo ${ChannelNo}" ${plistfile}
     ${PLISTBUDDY} -c "Set :ChannelNo_APPCPA ${ChannelNo_APPCPA}" ${plistfile}
 
-    ####压缩Payload目录得到ipa文件并存放到distDir中
+    ####压缩Payload目录得到ipa文件以及zip文件,并存放到distDir中
     ipaName="${bundleName}_${versionShort}_${ChannelNo}_${ChanneName}.ipa"
+    zipName="${bundleName}_${versionShort}_${ChannelNo}_${ChanneName}.zip"
     #echo $ipaName; #输出文件名
     zip -r ${ipaName} Payload
-    mv ${ipaName} ${distDir}
+    zip -r ${zipName} ${ipaName}
+    rm -rdf ${ipaName}
+    mv ${zipName} ${distDir}
     echo "created IPA: $ipaName";
 
     ipaNameString="${ipaNameString}""${ipaName}""\n"
